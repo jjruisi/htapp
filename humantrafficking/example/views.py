@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from example.search import Search
+from example.db import dbinsert
 
 class HomePageView(TemplateView):
     template_name = "index.html"
@@ -16,10 +17,14 @@ def test_ajax(request):
 
         # do search stuff here
         searchterms = []
-        searchterms.append('bad')
+        searchterms.append('horrible')
 
         newSearch = Search(searchterms, 'com', 'g147288')
-        newSearch.searchloop()
+        array = newSearch.searchloop()
+
+        #print('\n'.join([str(lst) for lst in array]))
+        print(len(array))
+        dbinsert(array, 'test', 'test')
 
         # data to return to the view
         data = {

@@ -18,6 +18,7 @@ class Search:
         i = 30
         # open file
         review_file = open("review_file.txt", "w")
+        data = []
         while i < 1600:
             print("loop" + str(i))
             quote_page = "https://www.tripadvisor." + self.url_lang + "/Hotels-" + self.location + "-oa" + str(i) + ".html"
@@ -50,12 +51,16 @@ class Search:
                         rev_page = urllib2.urlopen(rev_link)
                         rev_soup = BeautifulSoup(rev_page, 'html.parser')
                         reviews = rev_soup.find_all('div', {'class': 'entry'})
-                        print(reviews)
+                        #print(reviews)
                         if reviews:
                                 parsed_review = reviews[0].get_text()
-                                print(parsed_review)
+                                #print(parsed_review)
                                 for search in self.search_terms:
                                     if search in parsed_review:
+                                        # add review data to array
+                                        review = [rev_link, parsed_review]
+                                        data.append(review)
+
                                         review_file.write(rev_link + "s\n")
                                         review_file.write(parsed_review+"\n")
 
@@ -67,3 +72,5 @@ class Search:
             #                 for String in lines:
             #                         if String.find(search_terms[0]):
             #                                 print(String)
+
+        return data
