@@ -4,10 +4,22 @@
 	<meta charset="UTF-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="{% static 'js/main.js' %}"></script>
-	<title>Welcome Home</title>
+	<title>Human Trafficking App</title>
 </head>
 <body>
-	<p> hello world </p>
+	<h1>Keyword Search</h1><br>
+	<label>Enter Keywords: </label>
+	<input type='text' id='keywords'><br>
+	<label>Enter Language: </label>
+	<select id="language">
+		<option value="en">English</option>
+		<option value="es">Spanish</option>
+	</select><br>
+	<label>Enter Location: </label>
+	<select id="location">
+                <option value="g147288">Dominican Republic</option>
+                <option value="g147319">Puerto Rico</option>
+	</select><br><br>
 	<button id="btn">Click Me!</button>
 </body>
 </html>
