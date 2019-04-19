@@ -13,17 +13,17 @@ def test_ajax(request):
     if request.method == "POST":
 
         # get data from ajax post
-        string = request.POST.get('data')
+        keywords = request.POST.get('keywords')
+        location = request.POST.get('location')
+        lang = request.POST.get('lang')
+        
+        #split up keyword string into list
+        searchterms = keywords.split(',')
 
-        # do search stuff here
-        searchterms = []
-        searchterms.append('horrible')
-
-        newSearch = Search(searchterms, 'com', 'g147288')
+        #search
+        newSearch = Search(searchterms, lang, location)
         array = newSearch.searchloop()
-        print(len(array))
-        print(*array)
-        dbinsert(array, 'test', 'test')
+        dbinsert(array, location, lang)
 
         # data to return to the view
         data = {
