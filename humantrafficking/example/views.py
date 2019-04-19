@@ -27,7 +27,7 @@ def test_ajax(request):
 
         # data to return to the view
         data = {
-            'data' : string
+            'data' : keywords
         }
 
     return JsonResponse(data)
