@@ -21,9 +21,8 @@ def test_ajax(request):
 
         newSearch = Search(searchterms, 'com', 'g147288')
         array = newSearch.searchloop()
-
-        #print('\n'.join([str(lst) for lst in array]))
         print(len(array))
+        print(*array)
         dbinsert(array, 'test', 'test')
 
         # data to return to the view
