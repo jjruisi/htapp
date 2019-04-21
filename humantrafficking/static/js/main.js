@@ -14,11 +14,18 @@ $( document ).ready(function() {
 				'lang' : $lang
 			},
 			dataType: 'json',
-			success: function(data) {
-				alert(data.data);
+			success: function(values) {
+				var obj = JSON.parse(values);
+				$("#table").DataTable ( {
+					data: obj.data,
+					columns: [
+						{ title : "url" },
+						{ title : "review" }
+					]
+		                });
+
 			}
 		});
-
         });
 });
 

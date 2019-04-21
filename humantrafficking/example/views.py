@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from example.search import Search
 from example.db import dbinsert
+import json
 
 class HomePageView(TemplateView):
     template_name = "index.html"
@@ -17,18 +18,27 @@ def test_ajax(request):
         location = request.POST.get('location')
         lang = request.POST.get('lang')
         
-        #split up keyword string into list
+        # split up keyword string into list
         searchterms = keywords.split(',')
 
-        #search
+        # search
         newSearch = Search(searchterms, lang, location)
         array = newSearch.searchloop()
+
+        # insert search result into db
         dbinsert(array, location, lang)
 
+        # convert array to json
+        arr = []
+        for review in array:
+            x = [review[0], review[1]]
+            arr.append(x)
         # data to return to the view
         data = {
-            'data' : keywords
+            "data" : arr
         }
 
-    return JsonResponse(data)
+        jsonlist = json.dumps(data)
+
+    return JsonResponse(jsonlist, safe=False)
 
