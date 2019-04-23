@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from example.search import Search
+#from example.search import Search
+from example.search2 import Search
 from example.db import dbinsert
 import json
 
