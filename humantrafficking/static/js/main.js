@@ -15,6 +15,8 @@ $( document ).ready(function() {
 			},
 			dataType: 'json',
 			success: function(values) {
+				$("#data").html("");
+				$("#data").html("<table id='table' class='display' style='width=100%'></table>");
 				var obj = JSON.parse(values);
 				$("#table").DataTable ( {
 					data: obj.data,
