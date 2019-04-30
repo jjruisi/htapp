@@ -21,8 +21,8 @@ $( document ).ready(function() {
 				$("#table").DataTable ( {
 					data: obj.data,
 					columns: [
-						{ title : "url" },
-						{ title : "review" }
+						{ "width": "50%", "title" : "url" },
+						{ "width": "50%", "title" : "review" }
 					]
 		                });
 
