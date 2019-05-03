@@ -23,11 +23,11 @@ Setup:
 
 		note: If you do not have pip installed, consult the following: https://pip.pypa.io/en/stable/installing/
 		
-	4. Setup MySQL database connection
+	4. SETUP MYSQL DATABASE CONNECTION
 		In /humantrafficking/example/db.py, enter your information for the 'host' , 'database', 'user', and
 		'password' fields to connect to your database;
 		
-		db.py assumes this table is in your database:
+		db.py assumes this table exists in your database:
 		
 		CREATE TABLE `TripAdvisor` (
  		 `id` int(6) unsigned NOT NULL AUTO_INCREMENT,
