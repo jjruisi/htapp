@@ -1,5 +1,6 @@
-This program is a Django based tool to search through all hotel reviews in a specified country and language.
+#HumanTrafficking Web Scraping Tool
 
+This program is a Django based tool to search through all hotel reviews in a specified country and language.
 
 This program uses Python 3.x. This can be run in any IDE, or from the command line, but it was created in
 Jetbrains PyCharm Community found @ https://www.jetbrains.com/pycharm/download/#section=windows.
