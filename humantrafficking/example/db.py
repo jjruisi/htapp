@@ -4,7 +4,7 @@ from mysql.connector import Error
 def dbinsert(array, location, lang):
 
     try:
-        connection = mysql.connector.connect(host='htdbinstance.c95umtwikayo.us-east-2.rds.amazonaws.com',database='humantrafficking',user='humantrafficking',password='mr84CfyVWS7KP9E')
+        connection = mysql.connector.connect(host='',database='',user='',password='')
         if connection.is_connected():
             db_Info = connection.get_server_info()
             print("Connected to MySQL database... MySQL Server version on ",db_Info)
