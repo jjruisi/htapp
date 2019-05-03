@@ -1,4 +1,4 @@
-#HumanTrafficking Web Scraping Tool
+# HumanTrafficking Web Scraping Tool
 
 This program is a Django based tool to search through all hotel reviews in a specified country and language.
 
