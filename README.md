@@ -8,9 +8,9 @@ If you are running into any errors after following the setup below, please conta
 
 
 Setup:
-	
-  1. INSTALL PYTHON 3.X
 
+	1. INSTALL PYTHON 3.X
+	
 	2. CLONE OR DOWNLOAD THIS REPOSITORY
 
 	3. INSTALL DEPENDANCIES:
@@ -21,8 +21,24 @@ Setup:
 			pip install beautifulsoup4
 
 		note: If you do not have pip installed, consult the following: https://pip.pypa.io/en/stable/installing/
+		
+	4. Setup MySQL database connection
+		In /humantrafficking/example/db.py, enter your information for the 'host' , 'database', 'user', and
+		'password' fields to connect to your database;
+		
+		db.py assumes this table is in your database:
+		
+		CREATE TABLE `TripAdvisor` (
+ 		 `id` int(6) unsigned NOT NULL AUTO_INCREMENT,
+  		 `url` varchar(255) DEFAULT NULL,
+  		 `review` text,
+  		 `location` varchar(64) DEFAULT NULL,
+ 		 `lang` varchar(64) DEFAULT NULL,
+  		 PRIMARY KEY (`id`),
+ 		 UNIQUE KEY `url` (`url`)
+		) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-	4. RUN THE PROJECT:
+	5. RUN THE PROJECT:
 		TO RUN THE PROJECT, OPEN THE TERMINAL IN THE /humantrafficking FOLDER AND RUN THE FOLLOWING COMMAND:
 			
 			python manage.py runserver
@@ -33,7 +49,7 @@ Setup:
 			python manage.py runserver 8080
 			
 
-	5. USE THE SERVICE:
+	6. USE THE SERVICE:
 		NAVIGATE TO THE LINK PROVIDED IN THE TERMINAL, BY DEFAULT IT SHOULD BE 127.0.0.1:8000
 		ENTER SEARCH TERMS IN THE FOLLOWING FORMAT:
 
@@ -41,7 +57,6 @@ Setup:
 
 OTHER NOTES:
 	This search will take time to run(up to 7 hours). Output will be sent to the front page upon conclusion. 
-	If you get a my SQL error, then you do not have permissions to access the SQL server. To change the 
-	server being used, the connector is initialized in /humantrafficking/example/db.py.
+
 			
 		
