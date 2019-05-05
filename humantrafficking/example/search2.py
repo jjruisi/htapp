@@ -41,26 +41,34 @@ class Search:
                 # save links to reviews of matching hotels on page
                 listLink = []
                 for a in list1:
+                    if 'Hotel_Review' in a.get('href'):
                         listLink.append(a['href'])
 
                 # iterate thru list of links, getting reviews
                 for String in listLink:
-                        rev_link = "https://www.tripadvisor." + self.url_lang + String
+                    i2 = 0
+                    while i2 < 1500:
+                        print("sub loop: " + str(i2))
+                        rev_link = "https://www.tripadvisor." + self.url_lang + String[0:38] + "or0" + str(i2)
+                        i2 = i2 + 5
                         # print(rev_link)
                         # parse page
                         rev_page = urllib2.urlopen(rev_link)
                         rev_soup = BeautifulSoup(rev_page, 'html.parser')
                         reviews = rev_soup.find_all('div', {'class': 'entry'})
-                        #print(reviews)
+                        print(reviews)
                         if reviews:
-                                parsed_review = reviews[0].get_text()
-                                #print(parsed_review)
-                                for search in self.search_terms:
-                                    if search in parsed_review:
-                                        review_file.write(rev_link + "s\n")
-                                        review_file.write(parsed_review+"\n")
-                                        review = [rev_link, parsed_review]
-                                        data.append(review)
+                            parsed_review = reviews[0].get_text()
+                            # print(parsed_review)
+                            for search in self.search_terms:
+                                if search in parsed_review:
+                                    # add review data to array
+                                    review = [rev_link, parsed_review]
+                                    data.append(review)
+
+                                    review_file.write(rev_link + "s\n")
+                                    review_file.write(parsed_review + "\n")
+
         return data
             # review_file.close()
             # lines = []
